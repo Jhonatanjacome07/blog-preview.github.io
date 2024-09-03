@@ -1,0 +1,162 @@
+/* Estilos generales para resetear padding y margen, y asegurar que el box-sizing sea border-box en todos los elementos*/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Definición de variables de CSS para los colores reutilizables a lo largo del código*/
+:root {
+    --yellow: hsl(47, 88%, 63%);
+    --white: hsl(0, 0%, 100%);
+    --grey: hsl(0, 0%, 50%);
+    --black: hsl(0, 0%, 7%);
+}
+
+/* Estilos para el body: se establece el color de fondo, altura mínima para cubrir toda la ventana, la fuente principal, y se centra el contenido con display grid */
+
+body {
+    background-color: var(--yellow);
+    min-height: 100vh;
+    font-family: 'Figtree', 'sans- serif';
+    display: grid;
+    /* Centra el contenido tanto horizontal como verticalmente*/
+    place-content: center;
+
+}
+
+/*Estilos para todas las imagenes: se asegura que ocupen el 100% del ancho del contenedor*/
+img {
+    width: 100%;
+    display: block;
+}
+
+/* Estilos para el contenedor principal (la tarjeta) */
+.card {
+    /* Fondo blanco para la tarjeta */
+    background-color: var(--white);
+    /* Ancho máximo de 400px */
+    max-width: 400px;
+    /* Espaciado interno */
+    padding: 1.5rem;
+    /* Espaciado externo */
+    margin: 1rem;
+    /* Posicionamiento relativo para poder usar ::before */
+    position: relative;
+    /* Bordes redondeados */
+    border-radius: 1rem;
+    /* Borde negro */
+    outline: 1px solid #000;
+
+}
+
+/* Pseudo-elemento antes de la tarjeta para crear una sombra o efecto de desplazamiento */
+.card::before {
+    /* Contenido vacío */
+    content: '';
+    /* Se muestra como un bloque */
+    display: block;
+    /* Ocupa todo el ancho del contenedor */
+    width: 100%;
+    /* Ocupa toda la altura del contenedor */
+    height: 100%;
+    /* Fondo negro */
+    background-color: var(--black);
+    /* Posición absoluta para colocarse detrás de la tarjeta */
+    position: absolute;
+    /* Desplazamiento hacia abajo */
+    top: 15px;
+    /* Desplazamiento hacia la derecha */
+    right: -15px;
+    /* Bordes redondeados */
+    border-radius: 1rem;
+    /* Asegura que el pseudo-elemento esté detrás de la tarjeta */
+    z-index: -1;
+}
+
+/*Bordes redndeados para la imagen dentro de la tarjeta */
+.card img{
+    border-radius: 1rem;
+}
+
+/*Estilos para un elemento dentro de la tarjeta que indica que es un contenido de aprendizaje*/
+.card .learning {
+    /*Fondo amarillo*/
+    background-color: var(--yellow);
+    /*Solo ocupa el ancho necesario para su contenido*/
+    width: min-content;
+    /*Espaciado interno*/
+    padding: .5rem;
+    /*Margen superior*/
+    margin-top: 1.5rem;
+    /*Texto en negrita*/
+    font-weight: 800;
+    /*Bordes reondeados*/
+    border-radius: .5rem;
+}
+
+/*Margen superior para el elemento que muestra la fecha*/
+.card .date{
+    margin-top: 1rem;
+}
+
+/*Estilos para los enlaces dentro del encabezado h1*/
+.card h1 a{
+    /*Color negro para el texto*/
+    color: var(--black);
+    /*Tamaño de fuente*/
+    font-size: 1.5rem;
+    /*Texto en negrita*/
+    font-weight: 800;
+    /*Altura de línea*/
+    line-height: 1;
+    /*Sin subrayado*/
+    text-decoration: none;
+}
+
+/* cambio de color del enlace al pasa el cursor sobre el*/
+.card h1 a:hover{
+    /*Cambia el color a amarillo*/
+    color: var(--yellow);
+}
+
+/*Estilos para el texto de descripción dentro de la tarjeta*/
+.card .description{
+    /*Color gris para el texto*/
+    color: var(--grey);
+    /*Altura de línea*/
+    line-height: 1.5;
+}
+
+/*Estilos para el contenedor del autor dentro de la tarjeta*/
+.card .author{
+    /*Margen superior*/
+    margin-top: 1rem;
+    /*Flexbox para alinear contenido*/
+    display: flex;
+    /*Alinea verticalmente al centro*/
+    align-items: center;
+    /*Espacio entre los elementos hijos*/
+    gap: 5rem;
+}
+
+/* Estilos para la imagen del autor*/
+.card .author img{
+    /*Ancho de la imagen*/
+    width: 30px;
+}
+
+/*Estilos para el nombre del autor*/
+.card .author .name{
+    /*Texto en negrita*/
+    font-weight: 800;
+}
+
+/*Media query para dispositivos con ancho maximo de 375px*/
+@media (max-width: 375px){
+    .card h1 a{
+        /*Disminuye el tamaño de fuente del enlace dentro de h1*/
+        font-size: 1.25rem;
+    }
+}
